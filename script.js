@@ -18,8 +18,11 @@ $(document).ready(function() {
                         carouselItem.addClass('active');
                     }
 
-                    const img = $('<img>').attr('src', image.urls.regular).addClass('d-block w-100');
-                    carouselItem.append(img);
+                    const container = $('<div>').addClass('fixed-size-container');
+                    const img = $('<img>').attr('src', image.urls.regular).addClass('d-block w-100 fixed-size-image');
+
+                    container.append(img)
+                    carouselItem.append(container);
                     carouselInner.append(carouselItem);
                 });
 

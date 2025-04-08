@@ -1,0 +1,91 @@
+body{
+    font-family: 'Inter';
+    background-color: #251E30;
+}
+
+.navbar-color{
+    background-color: #A591A8;
+}
+
+.color-text{
+    color: #FFFFFF;
+}
+
+.color-bg-button{
+    color: #835B87;
+}
+
+.carousel-custom-border {
+    border: 4px solid #835B87; /* Roxo */
+    border-radius: 37px; /* Arredondamento */
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    color: #835B87; /* Cor do ícone */
+    font-size: 2rem; /* Tamanho */
+    width: 50px; /* Largura do botão */
+}
+
+.carousel-control-prev {
+    left: 90px; /* Distância da borda esquerda */
+}
+
+.carousel-control-next {
+    right: 90px; /* Distância da borda direita */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: #543a57; /* Cor no hover */
+}
+
+
+.fixed-size-container {
+    width: 100%;
+    height: 500px; /* Altura fixa */
+    overflow: hidden; /* Corta partes que excederem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fixed-size-image {
+    object-fit: cover; /* Mantém a proporção e cobre o container */
+    width: 100%;
+    height: 100%;
+}
+
+
+.btn-custom {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Cor personalizada */
+.btn-custom {
+    background: #835B87; /* Roxo */
+    color: white;
+}
+
+/* Efeito hover */
+.btn-custom:hover {
+    background: #443046; /* Roxo mais escuro */
+}
+
+/* Tamanhos personalizados */
+.btn-large {
+    width: 166px;
+    height: 49px;
+    font-size: 1.2rem;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
