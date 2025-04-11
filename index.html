@@ -23,31 +23,34 @@
         <h1 class="text-center mb-4 color-text">Random Gallery</h1>
         
 
-        <div id="carouselExample" class="carousel slide " >
+        <div id="image-carousel" class="carousel slide " >
             <div class="carousel-inner  carousel-custom-border" id="carousel-inner">
                   <!-- As imagens serão injetadas aqui via JavaScript -->  
             </div>
             
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#image-carousel" data-bs-slide="prev">
                 <span class="fas fa-chevron-left fa-2x"></span> <!-- Ícone do Font Awesome -->
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#image-carousel" data-bs-slide="next">
                 <span class="fas fa-chevron-right fa-2x"></span> <!-- Ícone do Font Awesome -->
                 <span class="visually-hidden">Next</span>
             </button>
        
-            <div class="d-flex justify-content-center gap-2 my-3 ">
-                    <button type="button" class="btn-custom btn-large">Art</button>
-                    <button type="button" class="btn-custom btn-large">Party</button>
-                    <button type="button" class="btn-custom btn-large">Cars</button>
-                    <button type="button" class="btn-custom btn-large">People</button>
-                    <button type="button" class="btn-custom btn-large">Food</button>
-                    <button type="button" class="btn-custom btn-large">Music</button>
-                    <button type="button" class="btn-custom btn-large">Sports</button>
+            <div class="d-flex justify-content-center gap-2 my-3 category-buttons">
+                    <button type="button" class="btn-custom btn-large category-btn active" data-category="all">Todas</button>
+                    <button type="button" class="btn-custom btn-large category-btn" data-category="animals">Animais</button>
+                    <button type="button" class="btn-custom btn-large category-btn" data-category="nature">Natureza</button>
+                    <button type="button" class="btn-custom btn-large category-btn"  data-category="architecture">Arquitetura</button>
+                    <button type="button" class="btn-custom btn-large category-btn" data-category="people">Pessoas</button>
+                    <button type="button" class="btn-custom btn-large category-btn" data-category="tech">Tecnologia</button>
+                    <button type="button" class="btn-custom btn-large category-btn" data-category="food">Comida</button>
             </div>
-            
+            <!-- Imagens Similares -->
+        <div id="similar-images" class="mt-4 mb-5">
+            <!-- As imagens similares serão adicionadas aqui via JavaScript -->
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
