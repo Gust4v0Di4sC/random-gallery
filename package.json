@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "random gallery",
   "license": "ISC",
-  "author": "",
-  "type": "commonjs",
+  "author": "GustavoDiasC",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack serve --mode development",
+    "build": "NODE_ENV=production webpack --mode production",
+    "build:win": "set NODE_ENV=production && webpack --mode production"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",

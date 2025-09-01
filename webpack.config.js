@@ -9,6 +9,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
   module: {
     rules: [
       {
@@ -16,26 +19,32 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: { presets: ['@babel/preset-env'] }
+          options: { 
+            presets: ['@babel/preset-env']
+          }
         }
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: 'style.css' }),
+    new MiniCssExtractPlugin({ 
+      filename: 'style.css' 
+    }),
     new HtmlWebpackPlugin({
-      template: './src/index.html', // seu template base
+      template: './src/index.html',
       filename: 'index.html',
     })
   ],
   devServer: {
-    static: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     port: 9000,
     open: true,
   },
-  mode: 'production'
+  mode: 'development',
 };
