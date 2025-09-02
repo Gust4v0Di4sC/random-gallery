@@ -13,6 +13,7 @@ module.exports = (env, argv) => {
       filename: isProduction ? '[name].[contenthash].js' : 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
       clean: true,
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
@@ -32,6 +33,7 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/i,
           use: [
+            // Sempre use style-loader em development para hot reload
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
             'css-loader'
           ]
@@ -39,13 +41,18 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({ 
-        filename: isProduction ? '[name].[contenthash].css' : 'style.css',
-        chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css'
-      }),
+      // Só use MiniCssExtractPlugin em production
+      ...(isProduction ? [
+        new MiniCssExtractPlugin({ 
+          filename: '[name].[contenthash].css',
+          chunkFilename: '[id].[contenthash].css'
+        })
+      ] : []),
       new HtmlWebpackPlugin({
         template: './src/index.html',
         filename: 'index.html',
+        inject: 'body',
+        scriptLoading: 'defer',
         minify: isProduction ? {
           removeComments: true,
           collapseWhitespace: true,
@@ -62,16 +69,14 @@ module.exports = (env, argv) => {
     ],
     optimization: {
       minimize: isProduction,
-      minimizer: [
-        // Minificação do JavaScript
+      minimizer: isProduction ? [
         new TerserPlugin({
           terserOptions: {
             compress: {
-              drop_console: true, // Remove console.log em produção
+              drop_console: true,
             },
           },
         }),
-        // Minificação do CSS
         new CssMinimizerPlugin({
           minimizerOptions: {
             preset: [
@@ -82,9 +87,8 @@ module.exports = (env, argv) => {
             ],
           },
         }),
-      ],
-      // Otimização de chunks
-      splitChunks: {
+      ] : [],
+      splitChunks: isProduction ? {
         chunks: 'all',
         cacheGroups: {
           vendor: {
@@ -92,14 +96,8 @@ module.exports = (env, argv) => {
             name: 'vendors',
             chunks: 'all',
           },
-          styles: {
-            name: 'styles',
-            test: /\.css$/,
-            chunks: 'all',
-            enforce: true,
-          },
         },
-      },
+      } : false,
     },
     devServer: {
       static: {
@@ -108,8 +106,14 @@ module.exports = (env, argv) => {
       port: 9000,
       open: true,
       hot: true,
+      liveReload: true,
+      watchFiles: ['src/**/*'],
+      historyApiFallback: true,
     },
     mode: isProduction ? 'production' : 'development',
     devtool: isProduction ? 'source-map' : 'eval-source-map',
+    stats: {
+      errorDetails: true,
+    },
   };
 };

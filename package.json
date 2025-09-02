@@ -6,9 +6,8 @@
   "author": "GustavoDiasC",
   "main": "script.js",
   "scripts": {
-    "dev": "webpack serve --mode development",
+    "dev": "webpack serve --mode development --hot",
     "build": "webpack --mode production",
-    "build:analyze": "webpack --mode production --analyze",
     "clean": "rm -rf dist"
   },
   "dependencies": {

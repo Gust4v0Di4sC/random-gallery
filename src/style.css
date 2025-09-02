@@ -51,17 +51,7 @@ body{
     justify-content: center;
 }
 
-.prompt-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    padding: 8px;
-    font-size: 14px;
-    text-align: center;
-}
+
 
 .fixed-size-image {
     object-fit: cover; /* Mantém a proporção e cobre o container */
@@ -122,4 +112,35 @@ body{
 .btn-small {
     padding: 5px 10px;
     font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .carousel-control-prev {
+        left: 10px;
+        top: -178px;
+    
+    }
+    
+    .carousel-control-next {
+        right: 10px;
+        top: -178px;
+        
+    }
+}
+
+@media  (max-width: 400px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        color: #25142b;
+    }
+    
+        .carousel-control-prev {
+            left: -5px;
+            top: -61px;
+        }
+    
+        .carousel-control-next {
+            right: -5px;
+            top: -61px;
+        }
 }
